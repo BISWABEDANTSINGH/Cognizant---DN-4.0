@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.component {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Add right green border for separation */
+.component:not(:last-child) {
+  border-right: 4px solid green;
+}
