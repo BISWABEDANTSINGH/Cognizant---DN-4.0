@@ -1,4 +1,10 @@
-node_modules/
-build/
-.env
-.DS_Store
+target/
+*.class
+*.jar
+*.war
+*.log
+*.iml
+.idea/
+*.project
+*.classpath
+*.settings/
