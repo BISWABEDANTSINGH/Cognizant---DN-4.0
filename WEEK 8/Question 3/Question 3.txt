@@ -1,0 +1,63 @@
+Step 1 – Branching
+
+Create a new branch named GitNewBranch:
+git branch GitNewBranch
+
+List all local and remote branches:
+git branch -a
+
+Note: The * mark denotes the current branch.
+
+Switch to the new branch:
+git checkout GitNewBranch
+
+Create and add a file with content:
+echo "This is a new branch file" > branchfile.txt
+git add branchfile.txt
+
+Commit the changes:
+git commit -m "Added branchfile.txt in GitNewBranch"
+
+Check the status:
+git status
+
+Step 2 – Merging
+
+Switch back to the master branch:
+git checkout master
+
+View differences between master and GitNewBranch in command line:
+git diff GitNewBranch
+
+View differences visually using P4Merge:
+git mergetool
+
+Merge the source branch into master:
+git merge GitNewBranch
+
+View commit history after merge:
+git log --oneline --graph --decorate
+
+Delete the merged branch:
+git branch -d GitNewBranch
+
+Check status after deleting branch:
+git status
+
+Step 3 – GitLab Branch and Merge Requests (Overview)
+
+Push the branch to remote GitLab:
+git push origin GitNewBranch
+
+In GitLab:
+
+Go to your project
+
+Click "Merge Requests" → "New Merge Request"
+
+Select GitNewBranch as source and master as target
+
+Review changes and click "Create Merge Request"
+
+Once approved, merge the branch in GitLab and confirm changes appear in master.
+

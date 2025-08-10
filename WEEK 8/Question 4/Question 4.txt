@@ -1,0 +1,86 @@
+Step 1 – Verify Master State
+
+Check if master is clean:
+git checkout master
+git status
+
+Step 2 – Create Branch and Make Changes
+
+Create new branch:
+git branch GitWork
+git checkout GitWork
+
+Add a file hello.xml:
+echo "<message>Hello from branch</message>" > hello.xml
+git add hello.xml
+
+Commit changes:
+git commit -m "Added hello.xml in GitWork"
+
+Update content of hello.xml in branch:
+echo "<message>Hello updated from branch</message>" > hello.xml
+
+Check status:
+git status
+
+Commit updated changes:
+git add hello.xml
+git commit -m "Updated hello.xml in GitWork"
+
+Step 3 – Create Conflicting Changes in Master
+
+Switch to master:
+git checkout master
+
+Add a file hello.xml with different content:
+echo "<message>Hello from master</message>" > hello.xml
+
+Commit changes:
+git add hello.xml
+git commit -m "Added hello.xml in master"
+
+Step 4 – Observe Logs and Differences
+
+View log:
+git log --oneline --graph --decorate --all
+
+Check differences in command line:
+git diff master GitWork
+
+View differences visually with P4Merge:
+git mergetool
+
+Step 5 – Merge and Resolve Conflict
+
+Merge branch into master:
+git merge GitWork
+
+Git will show conflict markers (<<<<<<<, =======, >>>>>>>).
+
+Use a 3-way merge tool (like P4Merge) to resolve conflicts:
+git mergetool
+
+After resolving, mark file as resolved:
+git add hello.xml
+
+Commit the merge:
+git commit -m "Resolved merge conflict for hello.xml"
+
+Step 6 – Update .gitignore for Backup Files
+
+Add backup file pattern to .gitignore:
+echo "*.orig" >> .gitignore
+git add .gitignore
+git commit -m "Added backup file pattern to .gitignore"
+
+Step 7 – Cleanup and Verify
+
+List branches:
+git branch -a
+
+Delete merged branch:
+git branch -d GitWork
+
+View final log:
+git log --oneline --graph --decorate
+
